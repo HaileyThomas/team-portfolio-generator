@@ -7,3 +7,9 @@ test("creates an employee object", () => {
     expect(employee.id).toBe("01");
     expect(employee.email).toBe("wendy@email.com");
 });
+
+test("gets role", () => {
+    const employee = new Employee("Wendy", "01", "wendy@email.com");
+
+    expect(employee.getRole()).toBe("Employee");
+});
