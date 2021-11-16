@@ -1,20 +1,20 @@
 const Engineer = require("../lib/Engineer");
 
 test("creates a new Engineer object", () => {
-    const engineer = new Engineer("Max", "Hogwarts");
+    const engineer = new Engineer("Diana", "DianaGit");
 
-    expect(engineer.name).toBe("Max");
-    expect(engineer.school).toBe("Hogwarts");
+    expect(engineer.name).toBe("Diana");
+    expect(engineer.github).toBe("DianaGit");
 });
 
-test("checks that getSchool function is working", () => {
-    const engineer = new Engineer("Max", "Hogwarts");
+test("checks that getGithub function is working", () => {
+    const engineer = new Engineer("Diana", "DianaGit");
 
-    expect(engineer.getSchool()).toEqual(expect.stringContaining(engineer.school.toString()));
+    expect(engineer.getGithub()).toEqual(expect.stringContaining(engineer.github.toString()));
 })
 
 test("checks that role has been changed to Engineer", () => {
-    const engineer = new Engineer("Max", "Hogwarts");
+    const engineer = new Engineer("Diana", "DianaGit");
 
     expect(engineer.getRole()).toBe("Engineer");
 })
