@@ -7,11 +7,10 @@ let employees = [];
 
 function initializeApp() {
     console.log("Welcome to our Team Profile Generator!");
-}
+};
 
 function promptData() {
-
-    inquirer
+    return inquirer
         .prompt([{
             type: "input",
             name: "name",
@@ -78,9 +77,26 @@ function promptData() {
                 const employee = new Intern(answers);
                 employees.push(employee);
                 console.log(employees);
+                return answers;
             }
         })
-}
+};
+
+function confirmNew() {
+    return inquirer
+        .prompt([
+            {
+                type: "confirm",
+                name: "confirmNew",
+                message: "Would you like to add a new employee?",
+                default: false
+            }
+        ])
+        .then(confirmAnswer => {
+            console.log(confirmAnswer);
+        })
+};
 
 initializeApp();
-promptData();
+promptData()
+    .then(confirmNew);
