@@ -77,7 +77,6 @@ function promptData() {
                 const employee = new Intern(answers);
                 employees.push(employee);
                 console.log(employees);
-                return answers;
             }
         })
 };
@@ -87,13 +86,17 @@ function confirmNew() {
         .prompt([
             {
                 type: "confirm",
-                name: "confirmNew",
+                name: "confirmed",
                 message: "Would you like to add a new employee?",
                 default: false
             }
         ])
-        .then(confirmAnswer => {
-            console.log(confirmAnswer);
+        .then((reply) => {
+            if (reply.confirmed) {
+                promptData().then(confirmNew);
+            } else {
+                console.log("selected no");
+            }
         })
 };
 
