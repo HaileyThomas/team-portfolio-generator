@@ -1,5 +1,4 @@
 const inquirer = require("inquirer");
-const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -66,17 +65,14 @@ function promptData() {
             if (answers.role === 0) {
                 const employee = new Manager(answers);
                 employees.push(employee);
-                console.log(employees);
             }
             if (answers.role === 1) {
                 const employee = new Engineer(answers);
                 employees.push(employee);
-                console.log(employees);
             }
             if (answers.role == 2) {
                 const employee = new Intern(answers);
                 employees.push(employee);
-                console.log(employees);
             }
         })
 };
@@ -95,9 +91,13 @@ function confirmNew() {
             if (reply.confirmed) {
                 promptData().then(confirmNew);
             } else {
-                console.log("selected no");
+                runGenerator();
             }
         })
+};
+
+function runGenerator() {
+    console.log(employees);
 };
 
 initializeApp();
