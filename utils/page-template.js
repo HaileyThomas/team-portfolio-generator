@@ -2,14 +2,46 @@
 //const Engineer = require("..Engineer/lib/Engineer");
 //const Intern = require(".Intern./lib/Intern");
 
-function filterArray(employees) {
-    console.log(employees);
+//const { create } = require("@dicebear/avatars/dist/utils/prng");
 
-    const managers = employees.filter(checkManager);
-    
-    function checkManager(employees) {
-        return employees.answers.role === 0;
+function createManagers(employees) {
+    const managers = employees.filter(checkManagers);
+
+    function checkManagers(employees) {
+        return employees.Manager;
     }
+
+    managers.forEach(manager => {
+        return `
+        <section class="columns m-3">
+            <div class="card column is-narrow">
+                <div class="card-header has-background-primary">
+                    <h3 class="card-header-title has-text-light is-size-4">Manager</h3>
+                    <div class="card-header-icon">
+                        <span class="icon has-text-light is-size-4">
+                            <i class="fas fa-briefcase"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-content is-size-5">
+                    <ul>
+                        <li>
+                            <p><b>Name: </b>${managers.name}</p>
+                        </li>
+                        <li>
+                            <p><b>ID: </b>${managers.id}</p>
+                        </li>
+                        <li>
+                            <p><b>Email: </b><a href="mailto:${managers.email}">${managers.email}</a></p>
+                        </li>
+                        <li>
+                            <p>Office Number: </b>${managers.officeNumber}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        `
+    })
 };
 
 

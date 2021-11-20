@@ -4,7 +4,9 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const generatePage = require('./utils/page-template');
 const { writeFile } = require("./utils/generate");
-let employees = [];
+let managers = [];
+let engineers = [];
+let interns = [];
 
 function initializeApp() {
     console.log("Welcome to our Team Profile Generator!");
@@ -66,15 +68,15 @@ function promptData() {
         .then(answers => {
             if (answers.role === 0) {
                 const employee = new Manager(answers.name, answers.id, answers.email, answers.role, answers.officeNumber);
-                employees.push(employee);
+                managers.push(employee);
             }
             if (answers.role === 1) {
                 const employee = new Engineer(answers.name, answers.id, answers.email, answers.role, answers.github);
-                employees.push(employee);
+                engineers.push(employee);
             }
             if (answers.role == 2) {
                 const employee = new Intern(answers.name, answers.id, answers.email, answers.role, answers.school);
-                employees.push(employee);
+                interns.push(employee);
             }
         })
 };
@@ -93,24 +95,22 @@ function confirmNew() {
             if (reply.confirmed) {
                 promptData().then(confirmNew);
             } else {
+                let employees = [...managers, ...engineers, ...interns];
                 console.log(employees);
                 return employees;
             }
-        })
-        .then(employees => {
-            return generatePage(employees);
-        })
-        .then(pageHTML => {
-            return writeFile(pageHTML);
-        })
-        .then(writeFileResponse => {
-            console.log(writeFileResponse);
-        })
-        .catch(err => {
-            console.log(err);
         })
 };
 
 initializeApp();
 promptData()
     .then(confirmNew)
+    .then(employees => {
+        return generatePage(employees);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .catch(err => {
+        console.log(err);
+    })
