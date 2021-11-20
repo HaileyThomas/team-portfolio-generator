@@ -93,23 +93,24 @@ function confirmNew() {
             if (reply.confirmed) {
                 promptData().then(confirmNew);
             } else {
+                console.log(employees);
                 return employees;
             }
+        })
+        .then(employees => {
+            return generatePage(employees);
+        })
+        .then(pageHTML => {
+            return writeFile(pageHTML);
+        })
+        .then(writeFileResponse => {
+            console.log(writeFileResponse);
+        })
+        .catch(err => {
+            console.log(err);
         })
 };
 
 initializeApp();
 promptData()
     .then(confirmNew)
-    .then(employees => {
-        return generatePage(employees);
-    })
-    .then(pageHTML => {
-        return writeFile(pageHTML);
-    })
-    .then(writeFileResponse => {
-        console.log(writeFileResponse);
-    })
-    .catch(err => {
-        console.log(err);
-    })

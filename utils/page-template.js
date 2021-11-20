@@ -4,9 +4,15 @@
 
 function filterArray(employees) {
     console.log(employees);
+
+    const managers = employees.filter(checkManager);
+    
+    function checkManager(employees) {
+        return employees.answers.role === 0;
+    }
 };
 
-filterArray();
+
 
 
 module.exports = templateData => {
