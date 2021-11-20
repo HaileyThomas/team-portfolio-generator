@@ -1,3 +1,4 @@
+const fs = require('fs');
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
@@ -7,9 +8,11 @@ const { writeFile } = require("./utils/generate");
 let managers = [];
 let engineers = [];
 let interns = [];
+let employees = [];
 
 function initializeApp() {
     console.log("Welcome to our Team Profile Generator!");
+    promptData();
 };
 
 function promptData() {
@@ -79,6 +82,7 @@ function promptData() {
                 interns.push(employee);
             }
         })
+        .then(confirmNew)
 };
 
 function confirmNew() {
@@ -93,24 +97,29 @@ function confirmNew() {
         ])
         .then((reply) => {
             if (reply.confirmed) {
-                promptData().then(confirmNew);
+                employees = [...managers, ...engineers, ...interns];
+                promptData();
+
             } else {
-                let employees = [...managers, ...engineers, ...interns];
+                employees = [...managers, ...engineers, ...interns];
                 console.log(employees);
-                return employees;
+                const pageHTML = generatePage(employees);
+                fs.writeFile('./dist/index.html', pageHTML, err => {
+                    if (err) throw err;
+                    console.log("file has been created!");
+                })
             }
         })
 };
 
 initializeApp();
-promptData()
-    .then(confirmNew)
-    .then(employees => {
-        return generatePage(employees);
-    })
-    .then(pageHTML => {
-        return writeFile(pageHTML);
-    })
-    .catch(err => {
-        console.log(err);
-    })
+
+/*.then(employees => {
+    return generatePage(employees);
+})
+.then(pageHTML => {
+    return writeFile(pageHTML);
+})
+.catch(err => {
+    console.log(err);
+})*/

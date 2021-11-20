@@ -5,14 +5,12 @@
 //const { create } = require("@dicebear/avatars/dist/utils/prng");
 
 function createManagers(employees) {
-    const managers = employees.filter(checkManagers);
 
-    function checkManagers(employees) {
-        return employees.Manager;
-    }
 
-    managers.forEach(manager => {
-        return `
+    //employees.forEach(addManagers);
+
+    //function addManagers() {
+    return `
         <section class="columns m-3">
             <div class="card column is-narrow">
                 <div class="card-header has-background-primary">
@@ -26,31 +24,28 @@ function createManagers(employees) {
                 <div class="card-content is-size-5">
                     <ul>
                         <li>
-                            <p><b>Name: </b>${managers.name}</p>
+                            <p><b>Name: </b> </p>
                         </li>
                         <li>
-                            <p><b>ID: </b>${managers.id}</p>
+                            <p><b>ID: </b> </p>
                         </li>
                         <li>
-                            <p><b>Email: </b><a href="mailto:${managers.email}">${managers.email}</a></p>
+                            <p><b>Email: </b><a href="mailto:"> </a></p>
                         </li>
                         <li>
-                            <p>Office Number: </b>${managers.officeNumber}</p>
+                            <p>Office Number: </b> </p>
                         </li>
                     </ul>
                 </div>
             </div>
         `
-    })
+    // }
 };
 
 
 
 
-module.exports = templateData => {
-    // destructure data (review portfolio generator project)
-    // const { projects, about, ...header } = templateData;
-
+function generateHTML(employees) {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -74,7 +69,7 @@ module.exports = templateData => {
         </header>
         <main class="section">
             <section id="managers" class="columns m-3">
-            
+            ${createManagers(employees)}
             </section>
             <section id="engineers" class="columns m-3">
 
@@ -91,3 +86,5 @@ module.exports = templateData => {
         </html>
     `;
 };
+
+module.exports = generateHTML;
