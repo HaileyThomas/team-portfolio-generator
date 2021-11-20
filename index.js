@@ -98,7 +98,7 @@ function confirmNew() {
 };
 
 function runGenerator() {
-    console.log(employees);
+    console.log("Generating your Work Team Profile...");
 };
 
 initializeApp();
