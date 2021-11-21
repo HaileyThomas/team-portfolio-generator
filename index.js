@@ -103,8 +103,8 @@ function confirmNew() {
             } else {
                 employees = [...managers, ...engineers, ...interns];
                 console.log(employees);
-                console.log(employees.length);
-                const pageHTML = generatePage(employees);
+                console.log(managers);
+                const pageHTML = generatePage(managers, engineers, interns);
                 fs.writeFile('./dist/index.html', pageHTML, err => {
                     if (err) throw err;
                     console.log("file has been created!");

@@ -1,14 +1,8 @@
-//const Manager = require("../lib/Manager");
-//const Engineer = require("..Engineer/lib/Engineer");
-//const Intern = require(".Intern./lib/Intern");
-
 //const { create } = require("@dicebear/avatars/dist/utils/prng");
 
-let managerArr = [];
-
-const createManagers = managerArr => {
+const createManagers = managers => {
     return `
-    ${managerArr
+    ${managers
             .map(({ name, id, email, officeNumber }) => {
                 return `
             <div class="card column is-narrow">
@@ -46,8 +40,8 @@ const createManagers = managerArr => {
 
 
 
-function generateHTML(employees) {
-    managerArr = employees.filter(({ Manager }) => !Manager)
+function generateHTML(managers, engineers, interns) {
+    // managerArr = employees.filter(({ Manager }) => !Manager);
 
     return `
     < !DOCTYPE html >
@@ -72,10 +66,10 @@ function generateHTML(employees) {
                                     </header>
                                     <main class="section">
                                         <section id="managers" class="columns m-3">
-                                            ${createManagers(managerArr)}
+                                            ${createManagers(managers)}
                                         </section>
                                         <section id="engineers" class="columns m-3">
-
+                                            ${createEngineers(engineers)}
                                         </section>
                                         <section id="interns" class="columns m-3">
 
