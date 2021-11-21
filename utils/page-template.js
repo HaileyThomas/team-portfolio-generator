@@ -3,7 +3,7 @@ const createManagers = managers => {
     ${managers
             .map(({ name, id, email, officeNumber }) => {
                 return `
-            <div class="card column is-narrow">
+            <div class="card column is-3 m-3">
             <div class="card-header has-background-primary">
                 <h3 class="card-header-title has-text-light is-size-4">Manager</h3>
                 <div class="card-header-icon">
@@ -12,10 +12,10 @@ const createManagers = managers => {
                     </span>
                 </div>
             </div>
-            <div class="card-content is-size-5 text-is-centered">
+            <div class="card-content is-size-6 text-is-centered">
                     <ul>
                         <li>
-                            <p class="is-size-3"><b>${name}</b> ${id}</p>
+                            <p class="is-size-5 has-text-centered"><b>${name}</b> ${id}</p>
                         </li>
                         <li>
                             <p class="has-text-centered"><i class="far fa-building has-text-primary"></i> <b>Office Number: </b>${officeNumber}</p>
@@ -37,7 +37,7 @@ const createEngineers = engineers => {
     ${engineers
             .map(({ name, id, email, github }) => {
                 return `
-            <div class="card column is-narrow">
+            <div class="card column is-3 m-3">
                 <div class="card-header has-background-primary">
                     <h3 class="card-header-title has-text-light is-size-4">Engineer</h3>
                     <div class="card-header-icon">
@@ -46,19 +46,16 @@ const createEngineers = engineers => {
                         </span>
                     </div>
                 </div>
-                <div class="card-content is-size-5">
+                <div class="card-content is-size-6">
                     <ul>
                         <li>
-                            <p><b>Name: </b>${name}</p>
+                            <p class="is-size-5 has-text-centered"><b>${name}</b> ${id}</p>
                         </li>
                         <li>
-                            <p><b>ID: </b>${id}</p>
+                            <p class="has-text-centered"><i class="fab fa-github-square has-text-primary"></i> <b>GitHub: </b><a href="http://www.github.com/${github}">${github}</a></p>
                         </li>
                         <li>
-                            <p><b>Email: </b><a href="mailto:${email}">${email}</a></p>
-                        </li>
-                        <li>
-                            <p><b>GitHub: </b><a href="http://www.github.com/${github}">${github}</a></p>
+                            <p class="has-text-centered"><a href="mailto:${email}">${email}</a></p>
                         </li>
                     </ul>
                 </div>
@@ -74,7 +71,7 @@ const createInterns = interns => {
     ${interns
             .map(({ name, id, email, school }) => {
                 return `
-            <div class="card column is-narrow">
+            <div class="card column is-3 m-3">
                 <div class="card-header has-background-primary">
                     <h3 class="card-header-title has-text-light is-size-4">Intern</h3>
                     <div class="card-header-icon">
@@ -83,10 +80,10 @@ const createInterns = interns => {
                         </span>
                     </div>
                 </div>
-                <div class="card-content is-size-5">
+                <div class="card-content is-size-6">
                     <ul>
                         <li>
-                            <p><b>Name: </b>${name}</p>
+                            <p class="is-size-5 has-text-centered"><b>Name: </b>${name}</p>
                         </li>
                         <li>
                             <p><b>ID: </b>${id}</p>
