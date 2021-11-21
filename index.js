@@ -4,11 +4,10 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const generatePage = require('./utils/page-template');
-const { writeFile } = require("./utils/generate");
 let managers = [];
 let engineers = [];
 let interns = [];
-let employees = [];
+
 
 function initializeApp() {
     console.log("Welcome to our Team Profile Generator!");
@@ -58,7 +57,7 @@ function promptData() {
         {
             type: "input",
             name: "github",
-            message: "What is the engineer's GitHub?",
+            message: "What is the engineer's GitHub username?",
             when: (answers) => answers.role === 1
         },
         {
@@ -97,13 +96,9 @@ function confirmNew() {
         ])
         .then((reply) => {
             if (reply.confirmed) {
-                employees = [...managers, ...engineers, ...interns];
                 promptData();
 
             } else {
-                employees = [...managers, ...engineers, ...interns];
-                console.log(employees);
-                console.log(managers);
                 const pageHTML = generatePage(managers, engineers, interns);
                 fs.writeFile('./dist/index.html', pageHTML, err => {
                     if (err) throw err;
@@ -114,13 +109,3 @@ function confirmNew() {
 };
 
 initializeApp();
-
-/*.then(employees => {
-    return generatePage(employees);
-})
-.then(pageHTML => {
-    return writeFile(pageHTML);
-})
-.catch(err => {
-    console.log(err);
-})*/

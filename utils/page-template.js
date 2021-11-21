@@ -1,5 +1,3 @@
-//const { create } = require("@dicebear/avatars/dist/utils/prng");
-
 const createManagers = managers => {
     return `
     ${managers
@@ -14,19 +12,16 @@ const createManagers = managers => {
                     </span>
                 </div>
             </div>
-            <div class="card-content is-size-5">
+            <div class="card-content is-size-5 text-is-centered">
                     <ul>
                         <li>
-                            <p><b>Name: </b>${name}</p>
+                            <p class="is-size-3"><b>${name}</b> ${id}</p>
                         </li>
                         <li>
-                            <p><b>ID: </b>${id}</p>
+                            <p class="has-text-centered"><i class="far fa-building has-text-primary"></i> <b>Office Number: </b>${officeNumber}</p>
                         </li>
                         <li>
-                            <p><b>Email: </b><a href="mailto:${email}">${email}</a></p>
-                        </li>
-                        <li>
-                            <p><b>Office Number: </b>${officeNumber}</p>
+                            <p class="has-text-centered has-text-primary"><a href="mailto:${email}">${email}</a></p>
                         </li>
                     </ul>
                 </div>
@@ -113,10 +108,8 @@ const createInterns = interns => {
 
 
 function generateHTML(managers, engineers, interns) {
-    // managerArr = employees.filter(({ Manager }) => !Manager);
-
     return `
-    < !DOCTYPE html >
+    <!DOCTYPE html>
         <html lang="en">
 
             <head>

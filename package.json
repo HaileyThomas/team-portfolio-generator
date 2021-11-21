@@ -23,6 +23,7 @@
     "@dicebear/avatars": "^4.10.1",
     "@dicebear/avatars-avataaars-sprites": "^4.10.1",
     "inquirer": "^8.2.0",
-    "jest": "^27.3.1"
+    "jest": "^27.3.1",
+    "random-avatar-generator": "^2.0.0"
   }
 }
