@@ -37,7 +37,79 @@ const createManagers = managers => {
         }`
 };
 
+const createEngineers = engineers => {
+    return `
+    ${engineers
+            .map(({ name, id, email, github }) => {
+                return `
+            <div class="card column is-narrow">
+                <div class="card-header has-background-primary">
+                    <h3 class="card-header-title has-text-light is-size-4">Engineer</h3>
+                    <div class="card-header-icon">
+                        <span class="icon has-text-light is-size-4">
+                            <i class="fas fa-cogs"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-content is-size-5">
+                    <ul>
+                        <li>
+                            <p><b>Name: </b>${name}</p>
+                        </li>
+                        <li>
+                            <p><b>ID: </b>${id}</p>
+                        </li>
+                        <li>
+                            <p><b>Email: </b><a href="mailto:${email}">${email}</a></p>
+                        </li>
+                        <li>
+                            <p><b>GitHub: </b><a href="http://www.github.com/${github}">${github}</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            `;
+            })
+            .join('')
+        }`
+};
 
+const createInterns = interns => {
+    return `
+    ${interns
+            .map(({ name, id, email, school }) => {
+                return `
+            <div class="card column is-narrow">
+                <div class="card-header has-background-primary">
+                    <h3 class="card-header-title has-text-light is-size-4">Intern</h3>
+                    <div class="card-header-icon">
+                        <span class="icon has-text-light is-size-4">
+                            <i class="fas fa-graduation-cap"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-content is-size-5">
+                    <ul>
+                        <li>
+                            <p><b>Name: </b>${name}</p>
+                        </li>
+                        <li>
+                            <p><b>ID: </b>${id}</p>
+                        </li>
+                        <li>
+                            <p><b>Email: </b><a href="mailto:${email}">${email}</a></p>
+                        </li>
+                        <li>
+                            <p><b>School: </b>${school}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            `;
+            })
+            .join('')
+        }`
+};
 
 
 function generateHTML(managers, engineers, interns) {
@@ -72,7 +144,7 @@ function generateHTML(managers, engineers, interns) {
                                             ${createEngineers(engineers)}
                                         </section>
                                         <section id="interns" class="columns m-3">
-
+                                            ${createInterns(interns)}
                                         </section>
                                     </main>
                                     <footer class="footer">
