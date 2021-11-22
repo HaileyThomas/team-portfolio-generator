@@ -69,15 +69,15 @@ function promptData() {
         ])
         .then(answers => {
             if (answers.role === 0) {
-                const employee = new Manager(answers.name, answers.id, answers.email, answers.role, answers.officeNumber);
+                const employee = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
                 managers.push(employee);
             }
             if (answers.role === 1) {
-                const employee = new Engineer(answers.name, answers.id, answers.email, answers.role, answers.github);
+                const employee = new Engineer(answers.name, answers.id, answers.email, answers.github);
                 engineers.push(employee);
             }
             if (answers.role == 2) {
-                const employee = new Intern(answers.name, answers.id, answers.email, answers.role, answers.school);
+                const employee = new Intern(answers.name, answers.id, answers.email, answers.school);
                 interns.push(employee);
             }
         })
