@@ -102,7 +102,7 @@ function confirmNew() {
                 const pageHTML = generatePage(managers, engineers, interns);
                 fs.writeFile('./dist/index.html', pageHTML, err => {
                     if (err) throw err;
-                    console.log("file has been created!");
+                    console.log("File has been created! Check /dist folder!");
                 })
             }
         })
